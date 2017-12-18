@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="400dp"
+    android:layout_height="400dp"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="竖线调整模式中..."
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_in_out_paper"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="装纸/卸纸"
+            android:background="@color/color_home_button_bacground_02"
+            />
+
+
+        <Button
+            android:id="@+id/bt_left"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="向左调整"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_home_button_bacground_02"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_right"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="向右调整"
+            android:background="@color/color_home_button_bacground_02"
+            />
+
+
+        <Button
+            android:id="@+id/bt_speed_switch"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="速度切换"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_home_button_bacground_02"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_exit_save"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="退出保存"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <Button
+            android:id="@+id/bt_exit_not_save"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="不保存退出"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

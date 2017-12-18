@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="600dp"
+    android:layout_height="150dp"
+    android:background="@mipmap/float_bg"
+    android:padding="@dimen/widget_margin">
+
+  <ImageView
+      android:id="@+id/iv_logo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@mipmap/float_logo"
+      android:layout_centerVertical="true"
+      android:layout_marginLeft="44dp"
+      />
+
+    <ImageView
+        android:id="@+id/iv_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/float_dot"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="44dp"
+        android:layout_toRightOf="@+id/iv_logo"
+        />
+
+    <ImageView
+        android:id="@+id/iv_connection"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:background="@drawable/float_connection"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="44dp"
+        android:layout_toRightOf="@+id/iv_dot"
+        />
+    <ImageView
+        android:id="@+id/iv_in_or_out"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:background="@drawable/float_in_out"
+        android:layout_marginLeft="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/iv_connection"
+        />
+
+</RelativeLayout>

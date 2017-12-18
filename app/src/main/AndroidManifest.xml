@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="persional.lw.androidprinter">
+
+    <!-- 悬浮窗权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.HARDWARE_TEST" />
+    <!-- 这句话也是必须的 -->
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="true" />
+    <!-- 存储权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".views.activity.WelcomeActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+        <activity android:name=".views.activity.FloatViewActivity"></activity>
+        <activity
+            android:name=".views.activity.HomeActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
+        </activity>
+        <activity android:name=".views.activity.FirstLinePostionActivity" />
+        <activity android:name=".views.activity.PageLongCodeActivity" />
+        <activity android:name=".views.activity.EvenPageSettingActivity" />
+        <activity android:name=".views.activity.EvenPageTearActivity" />
+
+        <service android:name=".service.FloatService" />
+        <service android:name=".service.ReadDataService" />
+        <service android:name=".service.UpdateWidgetService" >
+            <intent-filter>
+                <action android:name="lw.persional.updataservice"/>
+            </intent-filter>
+
+        </service>
+
+        <receiver android:name=".views.activity.PrintWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="lw.persional.connection" />
+                <action android:name="lw.persional.disconnection" />
+                <action android:name="lw.persional.paper" />
+                <action android:name="lw.persional.out.paper" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/print_widget_info" />
+        </receiver>
+    </application>
+
+</manifest>

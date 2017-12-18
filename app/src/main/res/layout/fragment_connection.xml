@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/color_home_right_bacground_01"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/color_home_right_bacground_02"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/color_home_right_text_0"
+            android:textSize="18sp"
+            android:text="@string/connection_title"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tv_tilte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/color_home_right_text_0"
+            android:textSize="18sp"
+            android:text="(脱机模式)"
+            android:visibility="gone"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/color_home_right_bacground_02"
+        >
+        <View
+            android:layout_width="2dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:background="@color/color_home_vertical_line"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/connection_title_01"
+            android:textColor="@color/color_home_right_text_1"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+    <!--第一排按钮-->
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/color_home_right_bacground_02"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/copy"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/tv_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/printer_copy_low"
+                style="@style/HomeText"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+            
+            <Button
+                android:id="@+id/bt_copy"
+                android:layout_width="145dp"
+                android:layout_height="65dp"
+                android:background="@drawable/home_button"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:text="@string/connection_button_text_copy"
+                android:layout_marginTop="15dp"
+                style="@style/HomeButtonText"
+                />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/color_home_right_line"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/speed"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/tv_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/printer_speed_low"
+                style="@style/HomeText"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+            <Button
+                android:id="@+id/bt_speed"
+                android:layout_width="145dp"
+                android:layout_height="65dp"
+                android:background="@drawable/home_button"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+
+                android:text="@string/connection_button_text_speed"
+                style="@style/HomeButtonText"
+                />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    <!--第二排-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/color_home_right_bacground_02"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/compress"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/tv_compres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/printer_compress_low"
+                style="@style/HomeText"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+
+            <Button
+                android:id="@+id/bt_compress"
+                android:layout_width="145dp"
+                android:layout_height="65dp"
+                android:background="@drawable/home_button"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/connection_button_text_compress"
+                style="@style/HomeButtonText"
+                />
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/color_home_right_line"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="visible"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/page"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:id="@+id/tv_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/printer_page_one"
+                style="@style/HomeText"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+            <Button
+                android:id="@+id/bt_page"
+                android:layout_width="145dp"
+                android:layout_height="65dp"
+                android:background="@drawable/home_button"
+                android:layout_gravity="right"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:text="@string/connection_button_text_page"
+                style="@style/HomeButtonText"
+                />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            >
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="110dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    >
+
+                    <Button
+                        android:id="@+id/bt_first_line"
+                        android:layout_width="130dp"
+                        android:layout_height="47dp"
+                        android:text="@string/connection_button_text_firline"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/home_small_button"
+                        style="@style/HomeSmallButtonText"
+                        />
+                    <LinearLayout
+                        android:id="@+id/ll_buttons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        >
+                    <Button
+                        android:id="@+id/bt_page_long_code"
+                        android:layout_width="130dp"
+                        android:layout_height="47dp"
+                        android:text="@string/connection_button_text_page_order"
+                        android:layout_marginLeft="27dp"
+                        android:background="@drawable/home_small_button"
+                        style="@style/HomeSmallButtonText"
+                        />
+                    <Button
+                        android:id="@+id/bt_page_long"
+                        android:layout_width="130dp"
+                        android:layout_height="47dp"
+                        android:text="@string/connection_button_text_page_length"
+                        android:layout_marginLeft="27dp"
+                        android:background="@drawable/home_small_button"
+                        style="@style/HomeSmallButtonText"
+                        />
+                    <Button
+                        android:id="@+id/bt_even_page_setting"
+                        android:layout_width="130dp"
+                        android:layout_height="47dp"
+                        android:text="@string/connection_button_text_page_switch"
+                        android:layout_marginLeft="27dp"
+                        android:background="@drawable/home_small_button"
+                        style="@style/HomeSmallButtonText"
+                        />
+                    <Button
+                        android:id="@+id/bt_even_page_tear"
+                        android:layout_width="130dp"
+                        android:layout_height="47dp"
+                        android:text="@string/connection_button_text_page_tear"
+                        android:layout_marginLeft="27dp"
+                        android:background="@drawable/home_small_button"
+                        style="@style/HomeSmallButtonText"
+                        />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </ScrollView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:id="@+id/ll_hide"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:id="@+id/iv_hide_or_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/out"
+                        />
+                    <TextView
+                        android:id="@+id/tv_hide_or_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/connection_spread"
+                        android:textColor="#93949c"
+                        android:textSize="14sp"
+                        />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/ll_in_out_paper"
+                    android:layout_width="310dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@drawable/in_paper_button"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/inpaper_icon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="35dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/inpaper_line"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_in_out_paper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/in_paper"
+                        android:textSize="20sp"
+                        android:textColor="#4e2c2c"
+                        android:layout_marginLeft="70dp"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_toLeftOf="@+id/ll_in_out_paper"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/exit"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exit"
+                        android:textColor="#93949c"
+                        android:textSize="14sp"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

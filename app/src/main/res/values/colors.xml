@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+
+    <!--APP颜色色调-->
+    <color name="color_home_left">#3a3d5c</color>
+    <color name="color_home_left_text">#abadbf</color>
+    <color name="color_home_right_text_0">#404040</color>
+    <color name="color_home_right_text_1">#686868</color>
+    <color name="color_home_right_text_white">#ffffff</color>
+
+
+    <color name="color_home_right_bacground_01">#f0f0f0</color>
+    <color name="color_home_right_bacground_02">#ffffff</color>
+    <color name="color_home_right_line">#d9d9d9</color>
+
+    <color name="color_home_vertical_line">#8591ca</color>
+
+    <color name="color_home_button_bacground_01">#7e8ac4</color>
+    <color name="color_home_button_bacground_02">#8787ab</color>
+
+    <color name="dialog_text">#242424</color>
+
+
+
+    <color name="first_line_content">#d8d8d8</color>
+
+
+
+
+
+
+
+</resources>

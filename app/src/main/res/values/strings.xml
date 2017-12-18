@@ -1,0 +1,163 @@
+<resources>
+    <string name="app_name">打印机工具</string>
+    <string name="baudrate">baudRate(波特率 默认9600)</string>
+    <string name="databits">dataBites(数据位 默认8位)</string>
+    <string name="stopbits">stopBits(停止位 默认1个)</string>
+    <string name="parity">parity</string>
+    <string name="flowcontrol">flowControl</string>
+    <!-- 常用术语  -->
+    <string name="enum_suc">设备枚举成功！</string>
+    <string name="enum_fail">设备枚举失败！</string>
+
+    <string name="permission_usb">未经授权！</string>
+    <string name="not_support_usb">您的设备不支持USB HOST，请更换其他手机再试！</string>
+
+
+    <string name="port_suc">串口连接成功！</string>
+    <string name="port_fail">串口连接失败！</string>
+
+    <string name="service_start">开启悬浮窗!</string>
+
+    <string name="permission_float">需要取得权限以使用悬浮窗!</string>
+
+
+    <!--打印机状态说明-->
+    //单页、联页
+    <string name="printer_page_one">单页</string>
+    <string name="printer_page_more">连页</string>
+    //拷贝能力
+    <string name="printer_copy_low">低拷贝</string>
+    <string name="printer_copy_middle">中拷贝</string>
+    <string name="printer_copy_high">高拷贝</string>
+    //速度
+    <string name="printer_speed_low">标准速度</string>
+    <string name="printer_speed_middle">高速</string>
+    <string name="printer_speed_high">超高速</string>
+    //压缩能力
+    <string name="printer_compress_low">低压缩</string>
+    <string name="printer_compress_middle">中压缩</string>
+    <string name="printer_compress_high">高压缩</string>
+    //联机/脱机
+    <string name="printer_connection_c">联机</string>
+    <string name="printer_connection_d">脱机</string>
+    //报警/正常
+    <string name="printer_status_normal">正常</string>
+    <string name="printer_status_alarm">报警</string>
+    //特殊模式
+    <string name="printer_status_special_normal">NORMAL</string>
+    <string name="printer_status_special_self">自检</string>
+    <string name="printer_status_special_verticl">竖线调整</string>
+    <string name="printer_status_special_first_line">首行调整</string>
+    <string name="printer_status_special_bill">清单打印</string>
+    <string name="printer_status_special_init">all e2prom初始化</string>
+    //有纸/无纸
+    <string name="printer_paper_yes">有纸</string>
+    <string name="printer_paper_no">无纸</string>
+
+
+    <!--页面文字-->
+    <string name="button_factory">工厂模式</string>
+    <string name="button_restart">重启打印机</string>
+    <string name="connection_title">票据打印</string>
+    <string name="connection_title_01">状态显示</string>
+
+    <string name="connection_button_text_copy">拷贝切换</string>
+    <string name="connection_button_text_speed">速度切换</string>
+    <string name="connection_button_text_compress">压缩率切换</string>
+    <string name="connection_button_text_page">单连页切换</string>
+
+    <string name="connection_button_text_firline">首行位置</string>
+    <string name="connection_button_text_page_order">页长命令</string>
+    <string name="connection_button_text_page_length">页长</string>
+    <string name="connection_button_text_page_switch">连页切换</string>
+    <string name="connection_button_text_page_tear">连页撕纸</string>
+
+    <string name="first_line_title">首行位置</string>
+    <string name="first_line_content_01">单页上端余白</string>
+    <string name="first_line_content_02">单页微调</string>
+    <string name="first_line_content_03">连页上端余白</string>
+    <string name="first_line_content_04">连页微调</string>
+
+    <string name="page_long_code">页长命令</string>
+
+    <string name="even_page_setting">连页设置</string>
+    <string name="even_page_on_off">连页是否开启</string>
+
+    <string name="even_page_tear">连页撕纸</string>
+    <string name="even_page_tear_postion">撕纸位置调整</string>
+
+    <string name="factory">工厂模式</string>
+    <string name="factory_item_hex">固件升级</string>
+    <string name="factory_item_bill">清单打印</string>
+    <string name="factory_item_self">自检打印</string>
+    <string name="factory_item_vertical">竖线调整</string>
+    <string name="factory_item_first_line">首行调整</string>
+    <string name="factory_item_16">十六进制打印</string>
+    <string name="factory_item_option_init">菜单初始化</string>
+    <string name="factory_item_eeprom_init">EEPROM初始化</string>
+    <string name="factory_item_even_page_setting">连页设置</string>
+    <string name="factory_item_pit1">PIT1模式</string>
+    <string name="factory_item_save_print">转储打印</string>
+
+
+    <string name="connection_hide">隐藏其他功能</string>
+    <string name="connection_spread">显示其他功能</string>
+
+    <string name="in_paper">装纸</string>
+    <string name="out_paper">卸纸</string>
+    <string name="exit">退出</string>
+
+
+    <!-- USBDrriver说明-->
+    <string name="usb_conncetion_err">USB连接出错，请重启APP！</string>
+    <string name="usb_device_no">USB设备获取失败，请重启APP！</string>
+    <string name="usb_device_permission_no">USB需要权限，请点击屏幕出现的对话框确认后重启APP！</string>
+    <string name="usb_device_set_err">USB设置端口设置失败！</string>
+    <string name="usb_conncetion_suc">USB连接成功！</string>
+
+
+    <string-array name="baud_rate">
+        <item>300</item>
+        <item>600</item>
+        <item>1200</item>
+        <item>2400</item>
+        <item>4800</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>38400</item>
+        <item>57600</item>
+        <item>115200</item>
+        <item>230400</item>
+        <item>460800</item>
+        <item>921600</item>
+    </string-array>
+
+    <string-array name="stop_bits">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="data_bits">
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="parity">
+        <item>None</item>
+        <item>Odd</item>
+        <item>Even</item>
+        <item>Mark</item>
+        <item>Space</item>
+    </string-array>
+
+    <string-array name="flow_control">
+        <item>None</item>
+        <item>CTS/RTS</item>
+    </string-array>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+
+</resources>

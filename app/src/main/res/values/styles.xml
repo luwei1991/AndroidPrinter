@@ -1,0 +1,62 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="HomeText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/color_home_right_text_0</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">28dp</item>
+
+    </style>
+
+    <style name="HomeButtonText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_home_right_text_white</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="HomeSmallButtonText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_home_right_text_white</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="DialogButton">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <style name="Dialog" parent="@android:style/Animation.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="ActivityTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/color_home_right_text_0</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ActivityContent">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/color_home_right_text_0</item>
+
+    </style>
+    <style name="ActivityContent01">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/first_line_content</item>
+
+    </style>
+
+</resources>

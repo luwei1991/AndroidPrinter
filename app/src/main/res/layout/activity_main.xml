@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bt_setup"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="设置参数"
+            />
+
+        <Button
+            android:id="@+id/bt_setdefault"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="50dp"
+            android:text="设置默认参数"
+            />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/bt_test_send"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="发送测试数据"
+        />
+
+   <EditText
+       android:id="@+id/et_input"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:hint="输入"
+
+       />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+++++++++++++++++++ 数据显示 +++++++++++++++++++++"
+        />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_read"
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="400dp"
+    android:layout_height="400dp"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="固件升级中..."
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        />
+
+    <persional.lw.androidprinter.views.widget.CircleProgressBar
+        android:id="@+id/circle_bar"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:padding="50dp"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>
