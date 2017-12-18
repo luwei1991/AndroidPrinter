@@ -85,6 +85,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/bt_exit_save"
@@ -93,7 +94,6 @@
             android:layout_weight="1"
             style="@style/HomeSmallButtonText"
             android:text="退出保存"
-            android:layout_marginLeft="10dp"
             android:background="@color/colorAccent"
             android:layout_marginTop="10dp"
             />
