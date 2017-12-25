@@ -23,9 +23,6 @@ public class PageLongCodeActivity extends Activity implements PageLongCodeContra
     private PageLongCodeContract.Presenter presenter;
 
     private Switch btnSwitch;
-
-    private ImageView printStatus;
-
     private Button btnBack;
 
     @Override
@@ -38,14 +35,6 @@ public class PageLongCodeActivity extends Activity implements PageLongCodeContra
     }
 
     private void initView(){
-        printStatus = findViewById(R.id.iv_print_status);
-        int con = getIntent().getIntExtra(Constant.BroadCast.INTENT,0);
-        if(con == R.string.printer_connection_c){
-            setImage(printStatus,R.mipmap.connect);
-        }else{
-            setImage(printStatus,R.mipmap.disconnect);
-        }
-
 
         btnSwitch = findViewById(R.id.bt_switch);
         btnSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

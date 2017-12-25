@@ -5,16 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/color_home_right_bacground_01"
     >
-    <include
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.13"
-        layout="@layout/item_of_left"
-        />
+
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.87"
         android:orientation="vertical"
         >
         <RelativeLayout

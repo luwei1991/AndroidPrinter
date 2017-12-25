@@ -33,16 +33,13 @@ public class CircleProgressBar extends View {
     private int startAngle = -90;
 
     private int color = Color.DKGRAY;
+    private int outColor = Color.GREEN;
+
 
     float textWidh;
     int textHeight;
     //字体大小
     private float textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 50, getResources().getDisplayMetrics());
-
-
-
-
-
 
     public CircleProgressBar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -73,7 +70,7 @@ public class CircleProgressBar extends View {
         backgroudPaint.setStrokeWidth(strokeWidth);
         //动态圈
         foregroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);//消除锯齿
-        foregroundPaint.setColor(adjustAlpha(color, 0.3f));
+        foregroundPaint.setColor(adjustAlpha(outColor, 0.3f));
         foregroundPaint.setStyle(Paint.Style.STROKE);//只绘制轮廓
         foregroundPaint.setStrokeWidth(strokeWidth);
         //文字画笔
@@ -101,7 +98,7 @@ public class CircleProgressBar extends View {
         canvas.drawOval(rectF,backgroudPaint);
         float angle = 360 * progress / max;
         canvas.drawArc(rectF, startAngle, angle, false, foregroundPaint);
-        canvas.drawText(progress + "%", getMeasuredWidth()/2 - textWidh / 2, getMeasuredWidth()/2 + textHeight / 4, textPaint);
+        canvas.drawText(progress * 100 + "%", getMeasuredWidth()/2 - textWidh / 2, getMeasuredWidth()/2 + textHeight / 4, textPaint);
 
     }
 

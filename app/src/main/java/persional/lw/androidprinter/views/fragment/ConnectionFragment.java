@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.greenrobot.eventbus.EventBus;
 
 import persional.lw.androidprinter.R;
 import persional.lw.androidprinter.contract.ConnectionContract;
@@ -129,6 +128,8 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
             tvSpeed.setText(printerModel.getSpeed());
             if(printerModel.getConnection() == R.string.printer_connection_d){
                 tvTitle.setVisibility(View.VISIBLE);
+            }else{
+                tvTitle.setVisibility(View.GONE);
             }
 
             if(printerModel.getPaper() == R.string.printer_paper_yes){
@@ -166,7 +167,6 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
      */
     private void toFirtlineActivity(){
         Intent  intent = new Intent(getActivity(), FirstLinePostionActivity.class);
-        intent.putExtra(Constant.BroadCast.INTENT,presenter.getConnection());
         startActivity(intent);
 
     }
@@ -176,7 +176,6 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
      */
     private void toPageLongCodeActivity(){
         Intent  intent = new Intent(getActivity(), PageLongCodeActivity.class);
-        intent.putExtra(Constant.BroadCast.INTENT,presenter.getConnection());
         startActivity(intent);
 
     }
@@ -196,7 +195,7 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
             @Override
             public void onOptionPicked(int index, String item) {
                 presenter.setPageLong(Constant.PrinterCode.PAGE_LONG[index]);
-                Toast.makeText(getActivity(),"Code=" + Constant.PrinterCode.PAGE_LONG[index] + ", item=" + item,Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(),"Code=" + Constant.PrinterCode.PAGE_LONG[index] + ", item=" + item,Toast.LENGTH_LONG).show();
             }
         });
         optionPicker.setLabel("IN");
@@ -210,7 +209,6 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
      */
     private void toEvenPageChangeActivity(){
         Intent  intent = new Intent(getActivity(), EvenPageSettingActivity.class);
-        intent.putExtra(Constant.BroadCast.INTENT,presenter.getConnection());
         startActivity(intent);
 
     }
@@ -220,7 +218,6 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
      */
     private void toEvenPageTearActivity(){
         Intent  intent = new Intent(getActivity(), EvenPageTearActivity.class);
-        intent.putExtra(Constant.BroadCast.INTENT,presenter.getConnection());
         startActivity(intent);
 
     }
@@ -266,9 +263,5 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
 
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
+
 }

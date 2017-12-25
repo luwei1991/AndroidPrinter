@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="600dp"
+    android:layout_height="600dp"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="连页撕纸..."
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_back_forward"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="向后调整"
+            android:background="@color/color_home_button_bacground_02"
+            />
+
+
+        <Button
+            android:id="@+id/bt_forward"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="向前调整"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_home_button_bacground_02"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_exit_save"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="退出保存"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            />
+
+
+        <Button
+            android:id="@+id/bt_exit_not_save"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            style="@style/HomeSmallButtonText"
+            android:text="不保存退出"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -2,7 +2,7 @@ package persional.lw.androidprinter.util;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import java.io.File;
+
 
 
 /**
@@ -23,7 +23,7 @@ public class HexUpdate {
     /**
      * 启动线程发送数据
      */
-    public void startUpdate(String path){
+    public void startUpdate(){
         if(!TextUtils.isEmpty(path)){
             HexThread hexThread = new HexThread(path,handler);
             hexThread.start();

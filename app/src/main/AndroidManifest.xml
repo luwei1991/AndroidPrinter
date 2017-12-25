@@ -39,10 +39,10 @@
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
         </activity>
-        <activity android:name=".views.activity.FloatViewActivity"></activity>
         <activity
             android:name=".views.activity.HomeActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            >//x键盘默认不弹出
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
@@ -55,9 +55,13 @@
         <activity android:name=".views.activity.PageLongCodeActivity" />
         <activity android:name=".views.activity.EvenPageSettingActivity" />
         <activity android:name=".views.activity.EvenPageTearActivity" />
+        <activity android:name=".views.activity.TestPrintActivity"
+                  android:screenOrientation="landscape"
+            />
 
-        <service android:name=".service.FloatService" />
+
         <service android:name=".service.ReadDataService" />
+        <service android:name=".service.SendDataService" />
         <service android:name=".service.UpdateWidgetService" >
             <intent-filter>
                 <action android:name="lw.persional.updataservice"/>

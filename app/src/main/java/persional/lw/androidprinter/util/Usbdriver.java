@@ -11,6 +11,8 @@ import android.hardware.usb.UsbEndpoint;
 import android.hardware.usb.UsbInterface;
 import android.hardware.usb.UsbManager;
 import android.hardware.usb.UsbRequest;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -38,6 +40,20 @@ public class Usbdriver {
     private static UsbInterface mUsbInterface;
 
     private static UsbDeviceConnection connection;
+
+
+    private  static Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 0x566:
+                    if(null != msg.obj){
+                        Toast.makeText(MainApplication.instance,MainApplication.instance.getString((int)msg.obj),Toast.LENGTH_LONG).show();
+                    }
+                    break;
+            }
+        }
+    };
 
     static {
 
@@ -85,8 +101,6 @@ public class Usbdriver {
      * @return
      */
     public boolean writeData(byte[] bytes){
-
-        if(open()){
             try {
                 int recv =  connection.bulkTransfer(mUsbEndpointOut,bytes,bytes.length,1500);
                 if(recv < 0){
@@ -101,11 +115,7 @@ public class Usbdriver {
                 close();
                 return  false;
             }
-        }else {
-            toastMessage(R.string.usb_conncetion_err);
-            return false;
         }
-    }
 
     /**
      * 读取数据
@@ -131,28 +141,29 @@ public class Usbdriver {
      * @return
      */
     private static UsbDevice enumDevice(){
-            usbManager = (UsbManager) MainApplication.instance.getSystemService(Context.USB_SERVICE);
-            HashMap<String,UsbDevice> usbDeviceHashMap = usbManager.getDeviceList();
-            Iterator<UsbDevice> deviceIterator = usbDeviceHashMap.values().iterator();
-            UsbDevice mDevice = null;
-            while (deviceIterator.hasNext()){
-                UsbDevice usbDevice = deviceIterator.next();
-                if(usbDevice.getProductId() == Constant.UsbDevice.PID && usbDevice.getVendorId() == Constant.UsbDevice.VID){
-                    Log.d(TAG,"PID："+usbDevice.getProductId());
-                    mDevice = usbDevice;
-                }
+        usbManager = (UsbManager) MainApplication.instance.getSystemService(Context.USB_SERVICE);
+        HashMap<String,UsbDevice> usbDeviceHashMap = usbManager.getDeviceList();
+        Iterator<UsbDevice> deviceIterator = usbDeviceHashMap.values().iterator();
+        UsbDevice mDevice = null;
+        while (deviceIterator.hasNext()){
+            UsbDevice usbDevice = deviceIterator.next();
+            if(usbDevice.getProductId() == Constant.UsbDevice.PID && usbDevice.getVendorId() == Constant.UsbDevice.VID){
+                Log.d(TAG,"PID："+usbDevice.getProductId());
+                mDevice = usbDevice;
             }
-
-            return  mDevice;
-
         }
+        return  mDevice;
+    }
 
     /**
      * Toast
      * @param id
      */
     private static  void toastMessage(int id){
-        Toast.makeText(MainApplication.instance,MainApplication.instance.getString(id),Toast.LENGTH_LONG).show();
+        Message message = Message.obtain();
+        message.what= 0x566;
+        message.obj = id;
+        handler.sendMessage(message);
     }
 
 
@@ -206,7 +217,7 @@ public class Usbdriver {
 
 
 
-    private static final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
+    public static final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (Constant.ACTION_USB_PERMISSION.equals(action)) {

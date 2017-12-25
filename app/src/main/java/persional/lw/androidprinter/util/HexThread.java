@@ -6,12 +6,14 @@ package persional.lw.androidprinter.util;
 
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import org.apache.commons.io.output.ByteArrayOutputStream;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 import persional.lw.androidprinter.MainApplication;
@@ -30,6 +32,7 @@ class HexThread extends Thread{
 
     @Override
     public void run() {
+        Log.d("====lw","开始固件升级！");
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         InputStream is = null;
         Usbdriver usbdriver = new Usbdriver();
@@ -43,7 +46,7 @@ class HexThread extends Thread{
             }
             byte[] data = outStream.toByteArray();
             int j = Constant.UsbDevice.BUFFER_SIZE;
-            int curData = 0;
+            float curData = 0;
             if((data.length) % j == 0){
                 //如果能被整除
                 for(int i = 0;i < (data.length/j);i++){
@@ -51,7 +54,9 @@ class HexThread extends Thread{
                     usbdriver.writeData(hex01);
                     curData  = curData +j;
                     Message message = Message.obtain();
-                    message.arg1 = 0x56;
+                    DecimalFormat df = new DecimalFormat("0.00");//格式化小数
+                    String num = df.format((float)curData/(data.length));//返回的是String类型
+                    message.what = 0x56;
                     message.obj = curData/(data.length);
                     handler.sendMessage(message);
                 }
@@ -62,19 +67,21 @@ class HexThread extends Thread{
                         byte[] hex02 =  Arrays.copyOfRange(data,j*i,data.length);
                         usbdriver.writeData(hex02);
                     }else{
-                        byte[] hex01=  Arrays.copyOfRange(data,j*i,j * (i+1));
+                        byte[] hex01 = Arrays.copyOfRange(data,j*i,j * (i+1));
                         usbdriver.writeData(hex01);
                     }
                     curData  = curData +j;
                     Message message = Message.obtain();
-                    message.arg1 = 0x56;
-                    message.obj = curData/(data.length);
+                    DecimalFormat df = new DecimalFormat("0.00");//格式化小数
+                    String num = df.format((float)curData/(data.length));//返回的是String类型
+                    message.what = 0x56;
+                    Log.d("====lw",Float.parseFloat(num)+"");
+                    message.obj = Float.parseFloat(num);
                     handler.sendMessage(message);
                 }
             }
             //执行完毕
             handler.sendEmptyMessage(0x57);
-
         } catch (Exception e) {
             e.printStackTrace();
         }finally {

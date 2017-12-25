@@ -16,6 +16,7 @@ public interface FcatoryFragementContract {
         void showSelfPopView();
         void showVerticalView();
         void showFirstLineView();
+        void showTestPrint();
 
 
     }
@@ -53,6 +54,7 @@ public interface FcatoryFragementContract {
         void evenPageSetting();
         void piT1Mode();
         void savePrint();
+        boolean getPaper();
 
     }
 }

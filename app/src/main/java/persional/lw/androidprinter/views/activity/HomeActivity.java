@@ -6,12 +6,12 @@ import android.app.Dialog;
 
 import android.os.Bundle;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,8 +23,6 @@ import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 
-
-import java.util.List;
 
 import persional.lw.androidprinter.R;
 import persional.lw.androidprinter.contract.HomeContract;
@@ -51,6 +49,8 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     private LinearLayout reStart,factory;
     private FactoryFragment factoryFragment;
 
+    private long exitTime = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,9 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         initView();
         new HomePresenter(this);
         presenter.start();
+        //启动服务
+
+
 
 
     }
@@ -114,11 +117,9 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 //处理联机、脱机指令
                 presenter.dealConnection();
                 break;
-
             case R.id.ll_factory:
                 toFactory();
                 break;
-
             //重启打印机按钮
             case R.id.ll_restart:
                 reStartPrinter();
@@ -194,15 +195,6 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     }
 
 
-
-
-
-
-
-
-
-
-
     @Override
     public void setPresenter(HomeContract.Presenter presenter) {
         this.presenter = presenter;
@@ -216,22 +208,13 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
             //设置状态小图标,//设置联机、脱机图片(三种状态，联机、脱机、不能点击)
             if(printerModel.getConnection() == R.string.printer_connection_c){
                 setImage(ivPrintConnectStatus,R.mipmap.connect);
-                setImage(ivConnect,R.mipmap.ib_connect);
+                setImage(ivConnect,R.mipmap.ib_disconnect);
             }else {
                 setImage(ivPrintConnectStatus,R.mipmap.disconnect);
-                setImage(ivConnect,R.mipmap.ib_disconnect);
+                setImage(ivConnect,R.mipmap.ib_connect);
             }
-
-
-
         }
 
-
-    }
-
-    @Override
-    public byte[] loadCode() {
-        return Constant.PrinterStatus.OK;
     }
 
     @Override
@@ -240,5 +223,25 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         EventBus.getDefault().unregister(this);
     }
 
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                    Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
+    }
 
 }

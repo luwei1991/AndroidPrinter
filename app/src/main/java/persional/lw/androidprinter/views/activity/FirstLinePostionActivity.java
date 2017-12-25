@@ -87,7 +87,7 @@ public class FirstLinePostionActivity extends Activity implements FirstLineContr
                 }
 
                 textView.setText(item);
-                Toast.makeText(FirstLinePostionActivity.this,"Code=" + Constant.PrinterCode.PAGE_LONG[index] + ", item=" + item,Toast.LENGTH_LONG).show();
+//                Toast.makeText(FirstLinePostionActivity.this,"Code=" + Constant.PrinterCode.PAGE_LONG[index] + ", item=" + item,Toast.LENGTH_LONG).show();
             }
         });
         optionPicker.show();
@@ -118,7 +118,7 @@ public class FirstLinePostionActivity extends Activity implements FirstLineContr
                     presenter.evenTrim(Constant.PrinterCode.PAGE_CHANGE[index]);
                 }
                 textView.setText(item);
-                Toast.makeText(FirstLinePostionActivity.this,"Code=" + Constant.PrinterCode.PAGE_LONG[index] + ", item=" + item,Toast.LENGTH_LONG).show();
+//                Toast.makeText(FirstLinePostionActivity.this,"Code=" + Constant.PrinterCode.PAGE_LONG[index] + ", item=" + item,Toast.LENGTH_LONG).show();
             }
         });
         optionPicker.show();

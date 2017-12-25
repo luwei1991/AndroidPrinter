@@ -5,26 +5,26 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import org.greenrobot.eventbus.EventBus;
+
 import persional.lw.androidprinter.MainApplication;
-import persional.lw.androidprinter.model.event.DataReceiveEvent;
-import persional.lw.androidprinter.util.StringUtil;
+import persional.lw.androidprinter.util.Constant;
 
 /**
  * 启动读取数据服务
  * Created by 陆伟 on 2017/11/29.
  */
 
-public class ReadDataService extends Service{
+public class SendDataService extends Service{
 
     @Override
     public void onCreate() {
         super.onCreate();
+        startSendThread();
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        startReadThread();
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -32,18 +32,16 @@ public class ReadDataService extends Service{
     /**
      * 开启服务读取数据
      */
-    private void startReadThread(){
+    private void startSendThread(){
         Thread readThread = new Thread(){
             @Override
             public void run() {
-                byte[] buffer = new byte[4096];
-                int i = 0;
                 while (true) {
-                    int length = MainApplication.driver.ReadData(buffer, 4096);
-                    if (length > 0) {
-                        String recv = StringUtil.toHexString(buffer, length);
-                        //通过EventBus传递数据
-                        EventBus.getDefault().post(new DataReceiveEvent(recv));
+                    MainApplication.driver.WriteData(Constant.PrinterStatus.OK,Constant.PrinterStatus.OK.length);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
             }
@@ -51,13 +49,6 @@ public class ReadDataService extends Service{
 
         readThread.start();
     }
-
-//    private String getCurTime(){
-//        Date date = new Date();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
-//        return dateFormat.format(date);
-//
-//    }
 
     @Nullable
     @Override
@@ -69,7 +60,6 @@ public class ReadDataService extends Service{
     public void onDestroy() {
         super.onDestroy();
         stopSelf();
-        EventBus.getDefault().unregister(this);
     }
 
 }

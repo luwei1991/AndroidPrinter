@@ -1,9 +1,11 @@
 package persional.lw.androidprinter.views.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
+
 
 import persional.lw.androidprinter.R;
 import persional.lw.androidprinter.contract.FcatoryFragementContract;
 import persional.lw.androidprinter.presenter.FactoryPresenter;
+import persional.lw.androidprinter.views.activity.TestPrintActivity;
 import persional.lw.androidprinter.views.widget.CircleProgressBar;
 import persional.lw.androidprinter.views.widget.wheelview.picker.FilePicker;
 
@@ -27,9 +33,11 @@ import persional.lw.androidprinter.views.widget.wheelview.picker.FilePicker;
 public class FactoryFragment extends BaseFragment implements FcatoryFragementContract.View,View.OnClickListener{
     public static String TAG = "FactoryFragment";
     private FcatoryFragementContract.Presenter presenter;
-    private RelativeLayout rlHex,rlBill,rlSelf,rlVertical,rlFirstLine,rlSixten,rlOptionInit,rlEepromInit,rlEvenpage,rlPIT1Mode,rlSavePrint;
+    private RelativeLayout rlHex,rlBill,rlSelf,rlVertical,rlFirstLine,rlPrintTest,
+            rlSixten,rlOptionInit,rlEepromInit,rlEvenpage,rlPIT1Mode,rlSavePrint;
+
+    private Button btnBack;
     private View rootView;
-//    private View barPopView;
     private PopupWindow popupWindow;
     private CircleProgressBar circleProgressBar;
     private Handler handler = new Handler(){
@@ -37,12 +45,14 @@ public class FactoryFragment extends BaseFragment implements FcatoryFragementCon
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 0x56:
-                    circleProgressBar.setProgress((int) msg.obj);
+                    Log.d("===",msg.obj+"");
+                    circleProgressBar.setProgress((float) msg.obj);
                     break;
                 case 0x57:
                     if(null != popupWindow){
                         popupWindow.dismiss();
                     }
+                    Toast.makeText(getActivity(),"固件升级完毕!，请在打印机三灯全灭后重启打印机设备！",Toast.LENGTH_LONG).show();
                     break;
             }
 
@@ -93,6 +103,10 @@ public class FactoryFragment extends BaseFragment implements FcatoryFragementCon
         rlPIT1Mode.setOnClickListener(this);
         rlSavePrint = rootView.findViewById(R.id.rl_save_print);
         rlSavePrint.setOnClickListener(this);
+        rlPrintTest = rootView.findViewById(R.id.rl_test_print);
+        rlPrintTest.setOnClickListener(this);
+        btnBack = rootView.findViewById(R.id.bt_back);
+        btnBack.setOnClickListener(this);
 
 
     }
@@ -140,26 +154,40 @@ public class FactoryFragment extends BaseFragment implements FcatoryFragementCon
             case R.id.rl_save_print:
                 presenter.savePrint();
                 break;
+            case R.id.rl_test_print:
+                showTestPrint();
+                break;
+            case R.id.bt_back:
+                FragmentTransaction fra = getActivity().getSupportFragmentManager().beginTransaction();
+                fra.replace(R.id.fl_content,new ConnectionFragment());
+                fra.commit();
+                break;
         }
 
     }
 
     @Override
     public void showFilePiccker() {
-        FilePicker picker = new FilePicker(getActivity(), FilePicker.FILE);
-        picker.setShowHideDir(false);
-        //picker.setAllowExtensions(new String[]{".apk"});
-        picker.setFileIcon(getResources().getDrawable(android.R.drawable.ic_menu_agenda));
-        picker.setFolderIcon(getResources().getDrawable(android.R.drawable.ic_menu_upload_you_tube));
-        //picker.setArrowIcon(getResources().getDrawable(android.R.drawable.arrow_down_float));
-        picker.setOnFilePickListener(new FilePicker.OnFilePickListener() {
-            @Override
-            public void onFilePicked(String currentPath) {
-                //弹出popupview显示进度条
-                showProgresBarPopView(currentPath);
-            }
-        });
-        picker.show();
+        if(presenter.getPaper()){
+            FilePicker picker = new FilePicker(getActivity(), FilePicker.FILE);
+            picker.setShowHideDir(false);
+            //picker.setAllowExtensions(new String[]{".apk"});
+            picker.setFileIcon(getResources().getDrawable(android.R.drawable.ic_menu_agenda));
+            picker.setFolderIcon(getResources().getDrawable(android.R.drawable.ic_menu_upload_you_tube));
+            //picker.setArrowIcon(getResources().getDrawable(android.R.drawable.arrow_down_float));
+            picker.setOnFilePickListener(new FilePicker.OnFilePickListener() {
+                @Override
+                public void onFilePicked(String currentPath) {
+                    //弹出popupview显示进度条
+                    showProgresBarPopView(currentPath);
+                }
+            });
+            picker.show();
+        }else{
+            Toast.makeText(getActivity(),"固件升级请确保打印机为有纸状态！",Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
     /**
@@ -373,9 +401,16 @@ public class FactoryFragment extends BaseFragment implements FcatoryFragementCon
             }
         });
 
-
-
     }
 
+    /**
+     * 打印字符串测试
+     */
+    @Override
+    public void showTestPrint() {
+        Intent intent = new Intent(getActivity(), TestPrintActivity.class);
+        startActivity(intent);
+        getActivity().finish();
+        }
 
-}
+    }

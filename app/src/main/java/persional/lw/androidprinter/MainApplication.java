@@ -1,24 +1,24 @@
 package persional.lw.androidprinter;
 
 import android.app.Application;
-import android.app.Dialog;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
-import android.support.v7.app.AlertDialog;
-import android.view.WindowManager;
+
 import android.widget.Toast;
 
-import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.IOException;
 
 import cn.wch.ch34xuartdriver.CH34xUARTDriver;
 import persional.lw.androidprinter.service.ReadDataService;
+import persional.lw.androidprinter.service.SendDataService;
 import persional.lw.androidprinter.util.Constant;
 import persional.lw.androidprinter.util.Usbdriver;
+
 
 /**
  * 程序入口
@@ -53,10 +53,13 @@ public class MainApplication extends Application {
      * 初始化参数
      */
     private void initDriverData(){
+
         //初始化串口驱动
         driver =  new CH34xUARTDriver((UsbManager) getSystemService(Context.USB_SERVICE), this, Constant.ACTION_USB_PERMISSION);
+        if(driver.isConnected()){
+            Toast.makeText(this,"设备已经连接！",Toast.LENGTH_SHORT).show();
+        }
         //判断设备是否支持USB_HOST
-        checkDevice();
         //打开设备
         // 返回0则打开设备成功，否则失败
         if(!(MainApplication.driver.ResumeUsbList() == Constant.ENUM_SUCESS)){
@@ -100,18 +103,8 @@ public class MainApplication extends Application {
     private void initService(){
         Intent intent = new Intent(this, ReadDataService.class);
         this.startService(intent);
-
-    }
-
-
-    /**
-     * 检查设置是否支持USB_HOST
-     */
-    private void checkDevice(){
-        if (!MainApplication.driver.UsbFeatureSupported()){// 判断系统是否支持USB HOST
-            Toast.makeText(this,R.string.not_support_usb,Toast.LENGTH_SHORT).show();
-            System.exit(0);
-        }
+        Intent intentSend = new Intent(this, SendDataService.class);
+        this.startService(intentSend);
     }
 
 
@@ -134,4 +127,6 @@ public class MainApplication extends Application {
     public float getDensity(){
         return getInstance().getResources().getDisplayMetrics().density;
     }
+
+
 }

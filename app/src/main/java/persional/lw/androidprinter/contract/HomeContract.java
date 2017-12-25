@@ -10,12 +10,10 @@ import persional.lw.androidprinter.presenter.BasePresenter;
 public interface HomeContract {
     interface View extends BaseView<Presenter>{
         void showPrinterInfo(PrinterModel printerModel);//将打印机返回信息回调
-        byte[] loadCode();//接口需要code
         void reStartPrinter();
     }
 
     interface Presenter extends BasePresenter{
-        void loadPrinterInfo();
         void sendStartCode();
         void connection();
         void disconnection();

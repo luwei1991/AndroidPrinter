@@ -3,10 +3,18 @@ package persional.lw.androidprinter.presenter;
 import android.os.Handler;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import persional.lw.androidprinter.MainApplication;
+import persional.lw.androidprinter.R;
 import persional.lw.androidprinter.contract.FcatoryFragementContract;
+import persional.lw.androidprinter.model.PrinterModel;
+import persional.lw.androidprinter.model.event.DataReceiveEvent;
 import persional.lw.androidprinter.util.Constant;
 import persional.lw.androidprinter.util.HexUpdate;
+import persional.lw.androidprinter.util.PrinterStatusUtil;
 import persional.lw.androidprinter.util.Usbdriver;
 
 /**
@@ -17,27 +25,28 @@ public class FactoryPresenter implements FcatoryFragementContract.Presenter{
     private static String TAG = "FactoryPresenter";
     private FcatoryFragementContract.View view;
 
+    private PrinterModel printerModel;
+
     public FactoryPresenter(FcatoryFragementContract.View view){
         this.view = view;
         view.setPresenter(this);
-
     }
 
     @Override
     public void start() {
-
+        EventBus.getDefault().register(this);
     }
 
     @Override
     public void hexUpdate(String path, Handler handler) {
-        Usbdriver usbdriver = new Usbdriver();
-        if(usbdriver.open()){//如果打开成功
-            HexUpdate hexUpdate = new HexUpdate(path,handler);
-            hexUpdate.startUpdate(path);
-        }else{
-            Toast.makeText(MainApplication.instance,"USB没有连接无法升级！",Toast.LENGTH_LONG).show();
-        }
-
+            Usbdriver usbdriver = new Usbdriver();
+            if(usbdriver.open()){//如果打开成功
+                usbdriver.writeData(new byte[]{0x1B,0x7C,0x7F,0x7F,(byte) 0xFF});
+                HexUpdate hexUpdate = new HexUpdate(path,handler);
+                hexUpdate.startUpdate();
+            }else{
+                Toast.makeText(MainApplication.instance,"USB没有连接无法升级！",Toast.LENGTH_LONG).show();
+            }
     }
 
     @Override
@@ -153,37 +162,48 @@ public class FactoryPresenter implements FcatoryFragementContract.Presenter{
      */
     @Override
     public void inFirstLine() {
+        sendByte(Constant.PrinterCode.FIRST_LINE);
 
     }
 
     @Override
     public void firsLineBacklittle() {
+        sendByte(Constant.PrinterCode.FIRST_LINE_BACK_LITTLE);
+
 
     }
 
     @Override
     public void firstLineToLittle() {
+        sendByte(Constant.PrinterCode.FIRST_LINE_TO_LITTLE);
+
 
     }
 
     @Override
     public void firstLineExitSave() {
+        sendByte(Constant.PrinterCode.FIRST_LINE_EXIT_SAVE);
+
 
     }
 
     @Override
     public void firstLineInOutPaper() {
+        sendByte(Constant.PrinterCode.FIRST_LINE_IN_OUT_PAPER);
+
 
     }
 
     @Override
     public void firsLineBasePostion() {
+        sendByte(Constant.PrinterCode.FIRST_LINE_BASE_POSTION);
+
 
     }
 
     @Override
     public void firstLineExitNotSave() {
-
+        sendByte(Constant.PrinterCode.FIRST_LINE_EXIT_NOT_SAVE);
     }
 
 
@@ -218,6 +238,21 @@ public class FactoryPresenter implements FcatoryFragementContract.Presenter{
     @Override
     public void savePrint() {
         sendByte(Constant.PrinterCode.SITEEN);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(DataReceiveEvent event) {
+        printerModel = PrinterStatusUtil.getPrintStatus(event.getMessage());
+    }
+
+    @Override
+    public boolean getPaper(){
+        if(null != printerModel && printerModel.getPaper() == R.string.printer_paper_yes) {
+            return  true;
+        }else {
+            return false;
+        }
     }
 
     /**

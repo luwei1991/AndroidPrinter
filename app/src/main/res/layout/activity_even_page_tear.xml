@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootview"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_home_right_bacground_01"
     >
-    <include
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.13"
-        layout="@layout/item_of_left"
-        />
+
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.87"
         android:orientation="vertical"
         >
         <RelativeLayout
@@ -46,9 +41,8 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             >
-
-
             <RelativeLayout
+                android:id="@+id/rl_tear_postion"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 >
@@ -69,16 +63,6 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="20dp"
                     android:layout_centerVertical="true"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/first_line_content_04"
-                    style="@style/ActivityContent01"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@+id/iv_right04"
                     />
             </RelativeLayout>
             <View

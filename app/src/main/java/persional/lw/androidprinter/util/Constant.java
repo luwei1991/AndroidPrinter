@@ -81,7 +81,7 @@ public  class Constant {
         /**DPK200 VID PID*/
 //        public static int PID = 513;
 //        public static int VID = 10633;
-        public static int BUFFER_SIZE = 1024;
+        public static int BUFFER_SIZE = 1024 * 10;
 
 
 
@@ -128,7 +128,7 @@ public  class Constant {
         public static byte[] PIT1= {(byte) 0xc0, (byte) 0xc0,0x00,0x03};
 
 
-        /**自检模式*/
+        /**进入自检模式*/
         public static byte[] SELF_PRINT= {(byte) 0xc0,0x01,0x00,0x03};
         /**自检模式 打印下一个编码区*/
         public static byte[] SELF_PRINT_NEXT_CODE= {(byte) 0xc0,0x01, (byte) 0x80,0x03};
@@ -167,9 +167,12 @@ public  class Constant {
         public static byte[] FIRST_LINE_BASE_POSTION = {(byte) 0xc0,0x04,0x08,0x03};
         public static byte[] FIRST_LINE_EXIT_NOT_SAVE = {(byte) 0xc0,0x04,0x04,0x03};
 
-
-
-
+        /**连页撕纸*/
+        public static byte[] EVEN_TEAR = {(byte) 0xc0, (byte) 0xc0,0x00,0x03};
+        public static byte[] EVEN_TEAR_FORWARD = {(byte) 0xc0, (byte) 0xc0,0x20,0x03};
+        public static byte[] EVEN_TEAR_BACK = {(byte) 0xc0, (byte) 0xc0,0x40,0x03};
+        public static byte[] EVEN_TEAR_EXIT_NOT_SAVE = {(byte) 0xc0, (byte) 0xc0, (byte) 0x80,0x03};
+        public static byte[] EVEN_TEAR_EXIT_SAVE = {(byte) 0xc0, (byte) 0xc0, (byte) 0x05,0x03};
 
 
 
@@ -190,22 +193,6 @@ public  class Constant {
         /**首行单页，连页微调*/
         public static byte[] PAGE_CHANGE = {0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,0x0e,0x0f,0x10,
         0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x1a,0x1b,0x1c,0x1d};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

@@ -3,9 +3,13 @@ package persional.lw.androidprinter.presenter;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import persional.lw.androidprinter.MainApplication;
 import persional.lw.androidprinter.R;
@@ -55,11 +59,20 @@ public class ConnectionFragmentPresenter implements ConnectionContract.Presenter
 
     }
 
+
+    private String getCurTime(){
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
+        return dateFormat.format(date);
+
+    }
+
     /**
      * 速度切换
      */
     @Override
     public void changeSpeed() {
+        Log.d("====lw   111",getCurTime());
         if(null == printerModel){
             Log.d(TAG,"printerModel is null");
             return;
@@ -136,7 +149,12 @@ public class ConnectionFragmentPresenter implements ConnectionContract.Presenter
 
     @Override
     public int getConnection() {
-        return printerModel.getConnection();
+        if(null != printerModel){
+            return printerModel.getConnection();
+        }else {
+            return R.string.printer_connection_d;
+        }
+
     }
 
 

@@ -1,6 +1,8 @@
 package persional.lw.androidprinter.presenter;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import persional.lw.androidprinter.R;
 import persional.lw.androidprinter.contract.HomeContract;
 import persional.lw.androidprinter.model.event.DataReceiveEvent;
 import persional.lw.androidprinter.model.PrinterModel;
+import persional.lw.androidprinter.service.SendDataService;
 import persional.lw.androidprinter.util.Constant;
 import persional.lw.androidprinter.util.DialogUtil;
 import persional.lw.androidprinter.util.PrinterStatusUtil;
@@ -37,15 +40,9 @@ public class HomePresenter implements HomeContract.Presenter{
     @Override
     public void start() {
         EventBus.getDefault().register(this);
-        loadPrinterInfo();
-
     }
 
-    @Override
-    public void loadPrinterInfo() {
-        byte[] code = view.loadCode();
-        sendByte(code);
-    }
+
 
 
 
@@ -56,6 +53,9 @@ public class HomePresenter implements HomeContract.Presenter{
         printerModel = PrinterStatusUtil.getPrintStatus(msg);
         view.showPrinterInfo(printerModel);
     }
+
+
+
     /**发送重启指令*/
     public void sendStartCode(){
         sendByte(Constant.PrinterCode.RESTART);
