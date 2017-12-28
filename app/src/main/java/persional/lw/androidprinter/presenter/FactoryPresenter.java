@@ -232,6 +232,7 @@ public class FactoryPresenter implements FcatoryFragementContract.Presenter{
 
     @Override
     public void piT1Mode() {
+
         sendByte(Constant.PrinterCode.PIT1);
     }
 
@@ -254,6 +255,7 @@ public class FactoryPresenter implements FcatoryFragementContract.Presenter{
             return false;
         }
     }
+
 
     /**
      * 发送数据

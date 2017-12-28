@@ -42,7 +42,7 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
     /**拷贝能力，速度,压缩能力,单页/连页*/
     private Button btnCopy,btnSpeed,btnCompress,btnPage,btniFrstLine,btnPageLongCode,btnPageLong,btnEvenPageSetting,btnEvenPageTear;
     /**装/卸,隐藏其他功能*/
-    private LinearLayout llInOutPaper,llHide,llButtons;
+    private LinearLayout llInOutPaper,llHide,llButtons,llExit;
     private ImageView ivHideOrOut;
 
     private boolean isShowOther = false;
@@ -105,6 +105,9 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
         llHide.setOnClickListener(this);
         llButtons = rootView.findViewById(R.id.ll_buttons);
         ivHideOrOut = rootView.findViewById(R.id.iv_hide_or_out);
+
+        llExit = rootView.findViewById(R.id.ll_exit);
+        llExit.setOnClickListener(this);
 
 
 
@@ -258,6 +261,12 @@ public class ConnectionFragment extends BaseFragment implements ConnectionContra
                 break;
             case R.id.bt_even_page_tear:
                 toEvenPageTearActivity();
+                break;
+            case R.id.ll_exit:
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 break;
         }
 

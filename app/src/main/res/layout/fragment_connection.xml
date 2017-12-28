@@ -422,6 +422,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_exit"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical"

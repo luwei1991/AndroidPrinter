@@ -13,7 +13,9 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.UnsupportedEncodingException;
 
+import persional.lw.androidprinter.MainApplication;
 import persional.lw.androidprinter.R;
+import persional.lw.androidprinter.util.Constant;
 import persional.lw.androidprinter.util.Usbdriver;
 
 /**
@@ -23,7 +25,7 @@ import persional.lw.androidprinter.util.Usbdriver;
 public class TestPrintActivity  extends Activity{
 
     private EditText editText;
-    private Button btnSend,doWhileSend,stopSend;
+    private Button btnSend,doWhileSend,stopSend,btnOutPaper,btnBack;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,19 +35,33 @@ public class TestPrintActivity  extends Activity{
          btnSend = findViewById(R.id.bt_send);
          doWhileSend = findViewById(R.id.bt_while_send);
          stopSend = findViewById(R.id.bt_stop_send);
-        final WriteThread writeThread = new WriteThread();
+         btnOutPaper = findViewById(R.id.bt_out_paper);
+         btnBack = findViewById(R.id.bt_back);
+         btnBack.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 finish();
+             }
+         });
+         btnOutPaper.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 MainApplication.driver.WriteData(Constant.PrinterCode.PAPER_CONNECTION,Constant.PrinterCode.PAGE_CONNECTION.length);
+             }
+         });
 
         doWhileSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                writeThread.start();
+                isExit = false;
+                new Thread(writeRun).start();
             }
         });
 
         stopSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                writeThread.isExit = true;
+                isExit = true;
             }
         });
 
@@ -57,7 +73,7 @@ public class TestPrintActivity  extends Activity{
                     Usbdriver usbdriver = new Usbdriver();
                     try {
                         byte[] sendBytes = etInput.getBytes("gbk");
-                        sendBytes = ArrayUtils.add(sendBytes, (byte) 0xd);
+                        sendBytes = ArrayUtils.add(sendBytes, (byte) 0xa);
                         usbdriver.writeData(sendBytes);
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
@@ -70,26 +86,27 @@ public class TestPrintActivity  extends Activity{
 
     }
 
+    boolean isExit = false;
 
+    Runnable  writeRun = new Runnable() {
+        @Override
+        public void run() {
+            Usbdriver usbdriver = new Usbdriver();
+            String testStr = "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH";
 
-}
-
-class WriteThread extends Thread{
-    public boolean isExit = false;
-    @Override
-    public void run() {
-        Usbdriver usbdriver = new Usbdriver();
-        String testStr = "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL";
-        while (!isExit){
-            try {
-                usbdriver.writeData(ArrayUtils.add(testStr.getBytes("gbk"), (byte) 0xd));
-                Thread.sleep(800);
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            while (!isExit){
+                try {
+                    usbdriver.writeData(ArrayUtils.add(testStr.getBytes("gbk"), (byte) 0xa));
+                    Thread.sleep(400);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
-    }
+    };
 }
+
+
 

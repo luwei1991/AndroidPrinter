@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
@@ -410,7 +409,6 @@ public class FactoryFragment extends BaseFragment implements FcatoryFragementCon
     public void showTestPrint() {
         Intent intent = new Intent(getActivity(), TestPrintActivity.class);
         startActivity(intent);
-        getActivity().finish();
         }
 
     }

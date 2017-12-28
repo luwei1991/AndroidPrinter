@@ -168,11 +168,11 @@ public  class Constant {
         public static byte[] FIRST_LINE_EXIT_NOT_SAVE = {(byte) 0xc0,0x04,0x04,0x03};
 
         /**连页撕纸*/
-        public static byte[] EVEN_TEAR = {(byte) 0xc0, (byte) 0xc0,0x00,0x03};
-        public static byte[] EVEN_TEAR_FORWARD = {(byte) 0xc0, (byte) 0xc0,0x20,0x03};
-        public static byte[] EVEN_TEAR_BACK = {(byte) 0xc0, (byte) 0xc0,0x40,0x03};
-        public static byte[] EVEN_TEAR_EXIT_NOT_SAVE = {(byte) 0xc0, (byte) 0xc0, (byte) 0x80,0x03};
-        public static byte[] EVEN_TEAR_EXIT_SAVE = {(byte) 0xc0, (byte) 0xc0, (byte) 0x05,0x03};
+        public static byte[] EVEN_TEAR = {(byte) 0xc0, (byte) 0xa0,0x00,0x03};
+        public static byte[] EVEN_TEAR_FORWARD = {(byte) 0xc0, (byte) 0xa0,0x20,0x03};
+        public static byte[] EVEN_TEAR_BACK = {(byte) 0xc0, (byte) 0xa0,0x40,0x03};
+        public static byte[] EVEN_TEAR_EXIT_NOT_SAVE = {(byte) 0xc0, (byte) 0xa0, (byte) 0x80,0x03};
+        public static byte[] EVEN_TEAR_EXIT_SAVE = {(byte) 0xc0, (byte) 0xa0, (byte) 0x05,0x03};
 
 
 

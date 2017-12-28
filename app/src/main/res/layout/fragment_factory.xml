@@ -333,6 +333,7 @@
                 android:id="@+id/rl_save_print"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:visibility="gone"
                 >
                 <TextView
                     android:layout_width="wrap_content"

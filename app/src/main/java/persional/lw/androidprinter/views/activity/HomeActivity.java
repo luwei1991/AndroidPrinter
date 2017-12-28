@@ -208,10 +208,10 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
             //设置状态小图标,//设置联机、脱机图片(三种状态，联机、脱机、不能点击)
             if(printerModel.getConnection() == R.string.printer_connection_c){
                 setImage(ivPrintConnectStatus,R.mipmap.connect);
-                setImage(ivConnect,R.mipmap.ib_disconnect);
+                setImage(ivConnect,R.mipmap.ib_connect);
             }else {
                 setImage(ivPrintConnectStatus,R.mipmap.disconnect);
-                setImage(ivConnect,R.mipmap.ib_connect);
+                setImage(ivConnect,R.mipmap.ib_disconnect);
             }
         }
 
